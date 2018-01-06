@@ -5,7 +5,8 @@ const UserModel = require('../models/user-model').userModel;
 module.exports.createUser = function(req, res) {
     const NewUser = UserModel({
         name: req.body.name,
-        password: req.body.password
+        password: req.body.password,
+        filmId: ''
     });
     
     NewUser.save(function(err, result){
@@ -30,5 +31,16 @@ module.exports.getUser = function(req, res) {
         if(err) throw err;
 
         res.send(result);
+    });
+}
+
+module.exports.deleteLike = function(req, res) {
+    UserModel.remove({ filmId: req.body.filmId }, function(err) {
+        if (!err) {
+                message.type = 'notification!';
+        }
+        else {
+                message.type = 'error';
+        }
     });
 }

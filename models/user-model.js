@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const User = new Schema({
     name : String,
-    password: String
+    password: String,
+    filmId: String
 })
 
 module.exports = {
