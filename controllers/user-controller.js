@@ -3,10 +3,10 @@ const UserModel = require('../models/user-model').userModel;
 // send hall dimensions
 
 module.exports.createUser = function(req, res) {
+    console.log(req.body.name)
     const NewUser = UserModel({
         name: req.body.name,
-        password: req.body.password,
-        filmId: ''
+        password: req.body.password
     });
     
     NewUser.save(function(err, result){
@@ -31,16 +31,5 @@ module.exports.getUser = function(req, res) {
         if(err) throw err;
 
         res.send(result);
-    });
-}
-
-module.exports.deleteLike = function(req, res) {
-    UserModel.remove({ filmId: req.body.filmId }, function(err) {
-        if (!err) {
-                message.type = 'notification!';
-        }
-        else {
-                message.type = 'error';
-        }
     });
 }

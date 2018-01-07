@@ -5,6 +5,8 @@ var config = require('./config/config.js')
 var bodyParser = require('body-parser');
 var hallController = require('./controllers/hall-controller');
 var userController = require('./controllers/user-controller');
+var postController = require('./controllers/post-controller');
+var userFilmController = require('./controllers/user-film-controller');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,7 +21,10 @@ app.get('/api/hall/get', hallController.getDimensions);
 app.post('/api/user/create', userController.createUser);
 app.get('/api/user/all', userController.getUsers);
 app.get('/api/user/get/:name', userController.getUser);
-
+app.post('/api/post/create', postController.createPost);
+app.post('/api/post/update', postController.updatePost);
+app.post('/api/userfilm/deletelike', userFilmController.deleteLike);
+app.post('/api/userfilm/create', userFilmController.createUserFilm);
 
 app.listen(port, function(){
     console.log('Our app is running on http://localhost:' + port);

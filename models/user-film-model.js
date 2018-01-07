@@ -2,11 +2,12 @@ const mongoose = require('mongoose').set('debug', true);
 
 const Schema = mongoose.Schema;
 
-const User = new Schema({
+const UserFilm = new Schema({
     name : String,
-    password: String
+    password: String,
+    filmid: String
 })
 
 module.exports = {
-    userModel: mongoose.model('userModel', User)
+    userFilmModel: mongoose.model('userFilmModel', UserFilm)
 }

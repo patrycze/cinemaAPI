@@ -6,6 +6,7 @@ const Post = new Schema({
     title : String,
     poster: String,
     desc: String,
+    filmid: String,
     likesCount: Number
 })
 
