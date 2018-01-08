@@ -26,4 +26,15 @@ module.exports.deleteLike = function(req, res) {
                 message.type = 'error';
         }
     });
+
 }
+
+module.exports.getAllFilmsFromUser = function(req, res) {
+    UserFilmModel.find({ 
+        name: req.body.name}, function(err, result) {
+        if(err) throw err;
+        return res.send(result);
+    });
+  
+}
+

@@ -25,6 +25,8 @@ app.post('/api/post/create', postController.createPost);
 app.post('/api/post/update', postController.updatePost);
 app.post('/api/userfilm/deletelike', userFilmController.deleteLike);
 app.post('/api/userfilm/create', userFilmController.createUserFilm);
+app.post('/api/post/get', postController.getData);
+app.post('/api/userfilm/get', userFilmController.getAllFilmsFromUser);
 
 app.listen(port, function(){
     console.log('Our app is running on http://localhost:' + port);

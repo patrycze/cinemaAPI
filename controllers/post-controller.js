@@ -1,5 +1,5 @@
 const PostModel = require('../models/post-model').postModel;
-
+const fetch = require('node-fetch');
 // send hall dimensions
 
 module.exports.createPost = function(req, res) {
@@ -10,7 +10,7 @@ module.exports.createPost = function(req, res) {
         poster: req.body.poster,
         desc: req.body.desc,
         filmid: req.body.filmid,
-        likesCount: 0
+        likesCount: req.body.likesCount
 
     });
     
@@ -26,5 +26,13 @@ module.exports.updatePost = function(req, res) {
     PostModel.findOneAndUpdate(query, {likesCount: req.body.likesCount}, function(err, doc){
         if (err) return res.send(500, { error: err });
         return res.send("succesfully saved");
+    });
+}
+
+module.exports.getData = function(req, res) {
+    PostModel.find({ 
+        filmid: req.body.filmid}, function(err, result) {
+        if(err) throw err;
+        return res.send(result);
     });
 }
