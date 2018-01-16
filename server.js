@@ -7,6 +7,7 @@ var hallController = require('./controllers/hall-controller');
 var userController = require('./controllers/user-controller');
 var postController = require('./controllers/post-controller');
 var userFilmController = require('./controllers/user-film-controller');
+var cinemaController = require('./controllers/cinema-controller');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -27,6 +28,9 @@ app.post('/api/userfilm/deletelike', userFilmController.deleteLike);
 app.post('/api/userfilm/create', userFilmController.createUserFilm);
 app.post('/api/post/get', postController.getData);
 app.post('/api/userfilm/get', userFilmController.getAllFilmsFromUser);
+app.post('/api/cinema/create', cinemaController.createCinema);
+app.post('/api/cinema/getall', cinemaController.getCinemas);
+app.post('/api/cinema/get', cinemaController.getCinema);
 
 app.listen(port, function(){
     console.log('Our app is running on http://localhost:' + port);
