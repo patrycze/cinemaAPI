@@ -8,6 +8,8 @@ var userController = require('./controllers/user-controller');
 var postController = require('./controllers/post-controller');
 var userFilmController = require('./controllers/user-film-controller');
 var cinemaController = require('./controllers/cinema-controller');
+var filmController = require('./controllers/cinema-film-controller'); 
+var ticketController = require('./controllers/ticket-controller');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -31,6 +33,12 @@ app.post('/api/userfilm/get', userFilmController.getAllFilmsFromUser);
 app.post('/api/cinema/create', cinemaController.createCinema);
 app.post('/api/cinema/getall', cinemaController.getCinemas);
 app.post('/api/cinema/get', cinemaController.getCinema);
+app.post('/api/film/get', filmController.getFilm);
+app.post('/api/film/create', filmController.createFilm);
+app.post('/api/ticket/create', ticketController.createTicket);
+app.post('/api/ticket/get', ticketController.getTicket);
+app.post('/api/ticket/seats', ticketController.getSeats);
+
 
 app.listen(port, function(){
     console.log('Our app is running on http://localhost:' + port);
